@@ -1,5 +1,4 @@
 package com.adspro.app.notif
-
 import android.app.Notification
 import android.app.PendingIntent
 import android.content.Context
@@ -11,21 +10,7 @@ import com.adspro.app.R
 
 object Notifier {
     fun build(context: Context, text: String): Notification {
-        val intent = Intent(context, MainActivity::class.java)
-            .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        val pi = PendingIntent.getActivity(
-            context, 0, intent,
-            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
-        )
-        return NotificationCompat.Builder(context, AdsProApp.CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_sms)
-            .setContentTitle("Ads Pro")
-            .setContentText(text)
-            .setOngoing(true)
-            .setSilent(true)
-            .setPriority(NotificationCompat.PRIORITY_LOW)
-            .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
-            .setContentIntent(pi)
-            .build()
+        val pi = PendingIntent.getActivity(context, 0, Intent(context, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
+        return NotificationCompat.Builder(context, AdsProApp.CHANNEL_ID).setSmallIcon(R.drawable.ic_sms).setContentTitle("Ads Pro").setContentText(text).setOngoing(true).setSilent(true).setPriority(NotificationCompat.PRIORITY_LOW).setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE).setContentIntent(pi).build()
     }
 }

@@ -1,5 +1,4 @@
 package com.adspro.app
-
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -15,8 +14,7 @@ import com.adspro.app.worker.WatchdogWorker
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS) ==
-            PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS) == PackageManager.PERMISSION_GRANTED) {
             SmsSyncService.start(this)
             WatchdogWorker.schedule(this)
             CatchupScanWorker.schedulePeriodic(this)

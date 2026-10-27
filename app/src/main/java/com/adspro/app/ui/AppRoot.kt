@@ -1,17 +1,11 @@
 package com.adspro.app.ui
-
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 
-@Composable
-fun AppRoot() {
+@Composable fun AppRoot() {
     MaterialTheme {
         var page by remember { mutableIntStateOf(0) }
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
